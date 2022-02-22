@@ -49,8 +49,8 @@ class CertificateController extends Controller
 
         if($auth->isAuthenticated())
         {
-            $certificate = Certificate::orderBy('id','DESC')->get();
-            return view('certificates',compact('certificate'));
+            $certificates = Certificate::orderBy('id','DESC')->paginate(20);
+            return view('certificates',compact('certificates'));
         }
 
         return redirect('/login');
@@ -104,8 +104,8 @@ class CertificateController extends Controller
 
         if($auth->isAuthenticated())
         {
-        $certificate = Certificate::where('certificate_id','=',($request->search))->orWhere('st_name','=',($request->search)) ->paginate(10);
-        return view('certificates',compact('certificate'));
+        $certificates = Certificate::where('certificate_id','=',($request->search))->orWhere('st_name','=',($request->search)) ->paginate(10);
+        return view('certificates',compact('certificates'));
         }
         return redirect ('/login');
     }

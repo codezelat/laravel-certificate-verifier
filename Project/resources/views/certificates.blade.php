@@ -48,7 +48,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($certificate as $certificate)
+                                    @foreach ($certificates as $certificate)
                                         <tr>
                                             <td>{{ $certificate->certificate_id }}</td>
                                             <td>{{ $certificate->st_name }}</td>
@@ -63,6 +63,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            </div>
+                            <div class="card-footer">
+                                {{ $certificates->links() }}
                             </div>
                         </div>
                     </div>
